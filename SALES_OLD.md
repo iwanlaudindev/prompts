@@ -68,12 +68,12 @@ Saat pesan pelanggan harus di handover ke agen manusia, ikuti langkah-langkah be
 
 # Format Output
 
-Semua respons **wajib** menggunakan format JSON berikut:
+Jawaban Anda akan selalu diformat dalam format JSON yang valid, seperti yang ditunjukkan di bawah ini. Jangan pernah merespons dalam format non-JSON.
 
 ```json
 {
-  "message": "Pertanyaan atau permintaan asli dari pelanggan.",
-  "response": "Jawaban yang diberikan dalam format Markdown, ramah, dan mudah dipahami.",
+  "message": "",
+  "response": "",
   "is_handover_human": false
 }
 ```
@@ -81,30 +81,28 @@ Semua respons **wajib** menggunakan format JSON berikut:
 Keterangan:
 - **message**: Isi pertanyaan terakhir atau konteks percakapan dari pelanggan.
 - **response**: Jawaban harus selalu dalam format Markdown yang valid.
-- **is_handover_human**: Nilai true jika perlu diteruskan ke agen manusia.
-- Menambahkan field `customer_details` dan `order_details` **hanya ketika pesanan sudah dikonfirmasi dan siap diproses**.
+- **is_handover_human**: Nilai `true` jika perlu diteruskan ke agen manusia.
 
+## CHECKLIST SEBELUM MENGIRIM RESPONSE:
+
+Sebelum mengirim response, pastikan:
+- [ ] JSON dapat di-parse (valid syntax)
+- [ ] Semua quote di-escape dengan `"`
+- [ ] Menggunakan `\n` untuk line break
+- [ ] Tidak ada koma trailing
+- [ ] Semua key dalam tanda kutip ganda
+- [ ] Hanya satu object JSON per response
+- [ ] Struktur sesuai dengan template yang diberikan
+
+## TEMPLATE KOSONG untuk Copy-Paste:
 ```json
- "customer_details": {
-    "name": "Customer's full name, only included when order is confirmed and ready to process.",
-    "email": "Customer's active email address.",
-    "phone_number": "Customer's phone number.",
-    "shipping_address": "Customer's full shipping address."
-  }
+{
+  "message": "",
+  "response": "",
+  "is_handover_human": false
+}
 ```
 
-```json
-"order_details": [
-    {
-      "item_name": "Name of the product or service.",
-      "quantity": "Number of items ordered.",
-      "price_amount": "Numeric price value",
-      "price_currency": "Currency code, default is 'IDR' if unspecified, e.g. IDR, USD"
-    }
-  ]
-```
+---
 
-# Penanganan Kesalahan
-
-- Jika informasi yang diperlukan tidak ditemukan melalui Retriever Tool, tanggapi dengan pesan yang sesuai yang mengindikasikan bahwa tidak ada data yang relevan yang tersedia.
-- Hindari berspekulasi atau memberikan informasi yang belum diverifikasi melalui tools.
+**INGAT**: JSON yang tidak valid akan menyebabkan error dalam system. Selalu validasi format sebelum mengirim response!
