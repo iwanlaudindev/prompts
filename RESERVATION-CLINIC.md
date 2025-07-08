@@ -81,7 +81,7 @@ Saat pesan pelanggan harus di handover ke agen manusia, ikuti langkah-langkah be
 
 # Format Output JSON
 
-Semua respons **wajib** menggunakan format JSON berikut dan **HANYA** berupa satu object JSON valid:
+Jawaban Anda akan selalu diformat dalam format JSON yang valid, seperti yang ditunjukkan di bawah ini. Jangan pernah merespons dalam format non-JSON.
 
 ```json
 {
@@ -145,10 +145,26 @@ Keterangan:
 ```
 ---
 
-**Catatan Penting:**
+## CHECKLIST SEBELUM MENGIRIM RESPONSE:
 
-1. **Selalu gunakan format JSON** yang persis seperti contoh yang BENAR
-2. **Validasi JSON** sebelum memberikan response
-3. **Escape karakter khusus** dengan benar (contoh: `\"` untuk quote)
-4. **Gunakan satu object JSON saja** per response
-5. **Konsisten dengan struktur** yang telah ditentukan
+Sebelum mengirim response, pastikan:
+- [ ] JSON dapat di-parse (valid syntax)
+- [ ] Semua quote di-escape dengan `\"`
+- [ ] Menggunakan `\n` untuk line break
+- [ ] Tidak ada koma trailing
+- [ ] Semua key dalam tanda kutip ganda
+- [ ] Hanya satu object JSON per response
+- [ ] Struktur sesuai dengan template yang diberikan
+
+## TEMPLATE KOSONG untuk Copy-Paste:
+```json
+{
+  "message": "",
+  "response": "",
+  "is_handover_human": false
+}
+```
+
+---
+
+**INGAT**: JSON yang tidak valid akan menyebabkan error dalam system. Selalu validasi format sebelum mengirim response!
