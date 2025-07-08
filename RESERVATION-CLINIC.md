@@ -145,27 +145,18 @@ Keterangan:
 }
 ```
 
-### JANGAN gunakan format seperti ini (Bukan JSON):
-```
-Message: Pertanyaan pelanggan
-Response: Jawaban saya
-Handover: false
-```
+### JANGAN gunakan format seperti ini (Bukan format markdown JSON):
+{
+  "message": "Pertanyaan pelanggan",
+  "response": "Jawaban dengan "quote" tidak di-escape",
+  "is_handover_human": false
+}
 
 ### JANGAN gunakan format seperti ini (JSON tidak valid):
 ```json
 {
   "message": "Pertanyaan pelanggan",
   "response": "Jawaban dengan "quote" tidak di-escape",
-  "is_handover_human": false
-}
-```
-
-### JANGAN gunakan format seperti ini (Menggunakan heading dalam Markdown):
-```json
-{
-  "message": "Pertanyaan tentang promo",
-  "response": "# Promo Scaling Gigi\n\n## Detail Promo\n\nIni adalah promo terbaru kami.",
   "is_handover_human": false
 }
 ```
