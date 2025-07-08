@@ -96,23 +96,6 @@ Keterangan:
 - **response**: Jawaban harus selalu dalam format Markdown yang valid.
 - **is_handover_human**: Nilai true jika perlu diteruskan ke agen manusia.
 
-# Format Output JSON
-
-Semua respons **wajib** menggunakan format JSON berikut dan **HANYA** berupa satu object JSON valid:
-
-```json
-{
-  "message": "Pertanyaan atau permintaan asli dari pelanggan.",
-  "response": "Jawaban yang diberikan dalam format Markdown, ramah, dan mudah dipahami.",
-  "is_handover_human": false
-}
-```
-
-Keterangan:
-- **message**: Isi pertanyaan terakhir atau konteks percakapan dari pelanggan.
-- **response**: Jawaban harus selalu dalam format Markdown yang valid.
-- **is_handover_human**: Nilai true jika perlu diteruskan ke agen manusia.
-
 ## ✅ Contoh Format Output yang BENAR:
 
 ### Format JSON yang Valid:
